@@ -12,8 +12,8 @@ from sys import argv
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
-from OpenGL.GLE import *    #instalar o pacote libgle3
-
+from Abajur import Abajur
+#from OpenGL.libgle3 import *
 
 global esqdir
 global cimabaixo
@@ -36,8 +36,6 @@ distanciamax = 500    #distancia max para renderizar objs na proj. testar com 10
 estadoluz0 = 1
 estadoluz1 = 0
 estadoluz2 = 0
-lastx=0
-lasty=0
 
 def eixos():      #desenha os eixos x e y do plano cartesiano.
     glColor3f(.9, .1, .1) # cor RGB  eixo X
@@ -62,10 +60,168 @@ def eixos():      #desenha os eixos x e y do plano cartesiano.
     glPopMatrix()
 
 
+
+def desenha_com_poligonos():
+    glColor3f(1.0, 0.4, 0.0) # cor RGB
+    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
+    #glTranslate( 0.0, 1.0, 0.0)  #Transtaçao do objeto
+    #glRotatef(-90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
+    tamx = 0.0
+    tamy = 0.0
+    tamz = 0.0
+    lado = 0.2   
+    lado_i = 0.2 
+    dist = 0.2
+    dist_i = 0.2
+    cont = 1
+    while (cont <= 5):
+        cont += 1
+        tamx += ( lado_i * 2)
+        glBegin(GL_QUADS)# objeto   # GL_QUADS       ou    GL_LINE_LOOP
+        glColor3f(.9, .5, .5) # cor RGB
+        glVertex3f( tamx + lado, tamy + lado, tamz + dist )  #  eixo x
+        glVertex3f( tamx + lado, tamy - lado, tamz + dist )#     
+        glVertex3f( tamx - lado, tamy - lado, tamz  )#  eixo y
+        glVertex3f( tamx - lado, tamy + lado, tamz  )  #
+        tamz = tamz + dist
+        dist += (dist_i * cont ) 
+        glEnd()    
+    glPopMatrix()
+
+# desenho com o pushMatrix geral
+def desenha_com_extrusao():
+    glColor3f(1.0, 0.4, 0.0) # cor RGB
+    glPushMatrix()
+    glRotatef(-90, 0.1, 0.0, 0.0)
+    glTranslate(0,0,-0.8)
+    glutSolidCylinder(0.1, 0.8, 20, 20)
+    glPopMatrix()
+    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
+    glRotatef(-90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
+    cont = 1
+    while (cont <= 30):
+        cont += 1
+        glutSolidTorus(0.06,0.5,50,50)
+        glTranslate( 0.0, 0.0, 0.02)
+        glScale( 0.97, 0.97, 1)
+    glPopMatrix()
+
+# desenho com o pushMatrix para cada objeto do loop    
+def desenha_com_extrusao2():
+    glColor3f(0.3, 1.0, 0.6) # cor RGB
+    glTranslate( -1.5, 0.0, 0.0)  #Transtaçao do objeto
+    #glRotatef(-90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
+    cont = 1
+    translacaoX = 0.03
+    while (cont <= 25):
+        cont += 1
+        translacaoX += 0.03
+        glPushMatrix()
+        glTranslate( 0.0, 0.0, translacaoX)
+        
+        #glRotatef(3, 1.0, 0.0, 0.0)
+        #glScale( 0.9 , 0.9, 1.0)
+        #glScale( 1.0 - cont*0.03, 1.0 - cont*0.03, 1.0)
+        glScale( 1.0 - sin(cont*0.1), 1.0 - sin(cont*0.1), 1.0)
+        glutSolidTorus(0.06,0.5,50,50)  # o objeto vem depois
+        glPopMatrix()
+
+
+
+
 def desenho():
     global aux1
-    global aux2    
+    global aux2
+
     eixos()
+    Abajur().draw(1,{"x":0,"y":0,"z":2})    
+
+
+
+def iluminacao_da_cena():
+    
+    luzAmbiente0=[0.2,0.2,0.2,1.0]
+    luzDifusa0=[0.7,0.7,0.7,1.0]  # ; // "cor"
+    luzEspecular0 = [1.0, 1.0, 1.0, 1.0]  #;// "brilho"
+    posicaoLuz0=[0.0, 50.0, 50.0, 1.0]
+
+    luzAmbiente1=[0.0,0.0,0.0,1.0]
+    luzDifusa1=[0.0,0.0,1.0,1.0]  # ; // "cor"
+    luzEspecular1 = [0.0, 0.0, 1.0, 1.0]  #;// "brilho"
+    posicaoLuz1=[0.0, 50.0, -50.0, 1.0]
+
+    luzAmbiente2=[0.0,0.0,0.0,1.0]
+    luzDifusa2=[1.0,0.0,0.0,1.0]  # ; // "cor"
+    luzEspecular2 = [1.0, 0.0, 0.0, 1.0]  #;// "brilho"
+    posicaoLuz2=[0.0, 5.0, 0.0, 0.0]  # última coord como 0 pra funcionar como vetor da luz direcional
+    direcao2 = [0.0, -1,0, 0,0]  # direção do vetor do spot
+
+    #Capacidade de brilho do material
+    especularidade=[1.0,1.0,1.0,1.0]
+    especMaterial = 60;
+
+    # Especifica que a cor de fundo da janela será branca
+    glClearColor(1.0, 1.0, 1.0, 1.0)
+
+    # Habilita o modelo de colorização
+    glShadeModel(GL_SMOOTH)   # GL_SMOOTH ou GL_FLAT
+
+    #  Define a refletância do material
+    glMaterialfv(GL_FRONT,GL_SPECULAR, especularidade)
+    #  Define a concentração do brilho
+    glMateriali(GL_FRONT,GL_SHININESS,especMaterial)
+
+    # Ativa o uso da luz ambiente
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente0)
+
+    # Define os parametros da luz de número 0
+    glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente0)
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, luzDifusa0 )
+    glLightfv(GL_LIGHT0, GL_SPECULAR, luzEspecular0 )
+    glLightfv(GL_LIGHT0, GL_POSITION, posicaoLuz0 )
+
+    # Define os parametros da luz de número 1
+    glLightfv(GL_LIGHT1, GL_AMBIENT, luzAmbiente1)
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, luzDifusa1 )
+    glLightfv(GL_LIGHT1, GL_SPECULAR, luzEspecular1 )
+    glLightfv(GL_LIGHT1, GL_POSITION, posicaoLuz1 )
+    
+    # Define os parametros da luz de número 2
+    glLightfv(GL_LIGHT2, GL_AMBIENT, luzAmbiente2)
+    glLightfv(GL_LIGHT2, GL_DIFFUSE, luzDifusa2 )
+    glLightfv(GL_LIGHT2, GL_SPECULAR, luzEspecular2 )
+    glLightfv(GL_LIGHT2, GL_POSITION, posicaoLuz2 )
+    glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, direcao2); #direcao da luz
+    glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 5); # angulo do cone, de 0 a 180. 
+    
+
+    # Habilita a definição da cor do material a partir da cor corrente
+    glEnable(GL_COLOR_MATERIAL)
+    # Habilita o uso de iluminação
+    glEnable(GL_LIGHTING)
+    
+    # Habilita a luz de número 0
+    if estadoluz0 == 1:
+        glEnable(GL_LIGHT0)
+    else:
+        glDisable(GL_LIGHT0)
+        
+    # Habilita a luz de número 1
+    if estadoluz1 == 1:
+        glEnable(GL_LIGHT1)
+    else:
+        glDisable(GL_LIGHT1)
+
+    # Habilita a luz de número 2
+    if estadoluz2 == 1:
+        glEnable(GL_LIGHT2)
+        print('Luz Spot ligada.')
+    else:
+        glDisable(GL_LIGHT2)
+    
+    # Habilita o depth-buffering
+    glEnable(GL_DEPTH_TEST)
+
 
 def tela():
     global angulo
@@ -113,7 +269,9 @@ def tela():
     print('Camera: (' + str( sin(esqdir) * 10) + ',' + str(cimabaixo) + "," + str(cos(esqdir) * 10) + ')')
     print('Alvo: (' + str(aux1) +','+str(aux2)+',0)')
 
-
+   
+    
+    iluminacao_da_cena()
     glEnable(GL_DEPTH_TEST) # verifica os pixels que devem ser plotados no desenho 3d
 
     desenho()                    
@@ -217,10 +375,6 @@ def ControleMouse(button, state, x, y):
     tela()
     glutPostRedisplay()
 
-def JoinStyle (msg):
-    sys.exit(0)
-
-
 
 # PROGRAMA PRINCIPAL
 
@@ -232,13 +386,6 @@ glutDisplayFunc(tela)
 glutMouseFunc(ControleMouse)
 glutKeyboardFunc (Teclado)
 glutSpecialFunc (TeclasEspeciais)
-
-# create popup menu */
-
-glutCreateMenu (JoinStyle)
-glutAddMenuEntry (b"Exit", 99)
-glutAttachMenu (GLUT_RIGHT_BUTTON)
-
 glutMainLoop()  # Inicia o laço de eventos da GLUT
 
 
