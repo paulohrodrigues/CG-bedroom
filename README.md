@@ -20,3 +20,16 @@ Project for CG
 ```git
   git push origin your-name
 ```
+
+## Objects
+ - Cama - Flavio
+ - Guarda roupa - Rodrigo
+ - Abajur - Paulo
+ - Mesa com Notebook - Artur
+ - Janela - Gabriel
+ - Flor do Gabriel
+
+## Light
+ - Abajur - Paulo
+ - Lampada - ?
+ - Janela - Gabriel 
