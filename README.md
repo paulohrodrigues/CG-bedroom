@@ -3,7 +3,7 @@ Project for CG
 
 ## standard for the functions
 ```python
-  '''positions is a dictionary with {x:valuex,y:valuey}'''
+  '''positions is a dictionary with {x:valuex,y:valuey,z:valuez}'''
   
   class Abajur:
       def draw(self,scale,positions):
