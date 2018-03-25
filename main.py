@@ -13,7 +13,7 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 from OpenGL.GLE import *    #instalar o pacote libgle3
-
+from mesinha import Mesinha
 
 global esqdir
 global cimabaixo
@@ -66,6 +66,7 @@ def desenho():
     global aux1
     global aux2    
     eixos()
+    Mesinha().draw(2,{"x":0,"y":0,"z":0})
 
 def tela():
     global angulo
