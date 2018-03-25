@@ -64,3 +64,160 @@ class Window:
 		#============================
 		glPopMatrix()
 		#============================
+
+
+class Flower:
+	
+	def draw(scale=1,pos={'x':0,'y':0,'z':0}):
+
+		#==================================
+		glPushMatrix()
+		glScale(scale, scale, scale)
+		glTranslate(pos['x'], pos['y'], pos['z'])
+		#==================================
+
+		# VASO ==================
+		glColor3f(0.8, 0.4, 0.2)
+		glPushMatrix()
+		glTranslate( .1, 0, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( -.1, 0, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+    
+		glPushMatrix()
+		glTranslate( 0, 0, .1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( 0, 0, -.1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( .1, .1, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( -.1, .1, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+    
+		glPushMatrix()
+		glTranslate( 0, .1, .1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( 0, .1, -.1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( 0, .2, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( 0, .2, -.1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( 0, .2, .1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( .1, .2, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( -.1, .2, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( -.1, .2, .1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( -.1, .2, -.1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( .1, .2, -.1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		glPushMatrix()
+		glTranslate( .1, .2, .1)
+		glutSolidCube(.1)
+		glPopMatrix()
+		# VASO ==================
+
+		# CAULE ==================
+		glColor3f(0.372, 0.827, 0.333)
+		glPushMatrix()
+		glTranslate( 0, .3, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+		glPushMatrix()
+		glTranslate( 0, .4, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+		glPushMatrix()
+		glTranslate( 0, .5, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+		glPushMatrix()
+		glTranslate( 0, .6, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+		glPushMatrix()
+		glTranslate( .1, .3, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+		glPushMatrix()
+		glTranslate( -.1, .4, 0)
+		glutSolidCube(.1)
+		glPopMatrix()
+		# caule ==================
+
+		# petalas ==================
+		glColor3f(1, 0.952, 0.258)
+		glPushMatrix()
+		glTranslate( 0, .5, .1)
+		glutSolidCube(.1)
+		glPopMatrix()
+		glPushMatrix()
+		glTranslate( .1, .6, .1)
+		glutSolidCube(.1)
+		glPopMatrix()
+		glPushMatrix()
+		glTranslate( -.1, .6, .1)
+		glutSolidCube(.1)
+		glPopMatrix()
+		glPushMatrix()
+		glTranslate( 0, .7, .1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		# meio ==================
+		glColor3f(0.372, 0.290, 0.149)
+		glPushMatrix()
+		glTranslate( 0, .6, .1)
+		glutSolidCube(.1)
+		glPopMatrix()
+
+		#============================
+		glPopMatrix()
+		#============================
