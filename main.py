@@ -12,8 +12,10 @@ from sys import argv
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
-from Abajur import Abajur
-#from OpenGL.libgle3 import *
+from abajur import Abajur
+from mesinha import Mesinha
+from assets import *
+from wardrobe import Wardrobe
 
 global esqdir
 global cimabaixo
@@ -135,24 +137,27 @@ def desenho():
 
     eixos()
     Abajur().draw(1,{"x":0,"y":0,"z":2})    
-
+    Mesinha().draw(1,{"x":0,"y":0,"z":-1})
+    Window().draw(1,{"x":0,"y":0,"z":-5})
+    Flower().draw(1,{"x":0,"y":0,"z":5})
+    Wardrobe(1,{"x":5,"y":0,"z":0}).draw()
 
 
 def iluminacao_da_cena():
     
     luzAmbiente0=[0.2,0.2,0.2,1.0]
     luzDifusa0=[0.7,0.7,0.7,1.0]  # ; // "cor"
-    luzEspecular0 = [1.0, 1.0, 1.0, 1.0]  #;// "brilho"
+    luzEspecular0 = [0.01, 0.01, 0.01, 0.01]  #;// "brilho"
     posicaoLuz0=[0.0, 50.0, 50.0, 1.0]
 
     luzAmbiente1=[0.0,0.0,0.0,1.0]
     luzDifusa1=[0.0,0.0,1.0,1.0]  # ; // "cor"
-    luzEspecular1 = [0.0, 0.0, 1.0, 1.0]  #;// "brilho"
+    luzEspecular1 = [0.0, 0.0, 0.01, 0.01]  #;// "brilho"
     posicaoLuz1=[0.0, 50.0, -50.0, 1.0]
 
     luzAmbiente2=[0.0,0.0,0.0,1.0]
     luzDifusa2=[1.0,0.0,0.0,1.0]  # ; // "cor"
-    luzEspecular2 = [1.0, 0.0, 0.0, 1.0]  #;// "brilho"
+    luzEspecular2 = [0.01, 0.0, 0.0, 0.01]  #;// "brilho"
     posicaoLuz2=[0.0, 5.0, 0.0, 0.0]  # última coord como 0 pra funcionar como vetor da luz direcional
     direcao2 = [0.0, -1,0, 0,0]  # direção do vetor do spot
 

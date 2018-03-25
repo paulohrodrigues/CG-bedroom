@@ -5,8 +5,7 @@ from OpenGL.GLUT import *
 
 class Window:
 	
-
-	def draw(scale=1,pos={'x':0,'y':0,'z':0}):
+	def draw(self,scale=1,pos={'x':0,'y':0,'z':0}):
 
 		#==================================
 		glPushMatrix()
@@ -68,7 +67,7 @@ class Window:
 
 class Flower:
 	
-	def draw(scale=1,pos={'x':0,'y':0,'z':0}):
+	def draw(self,scale=1,pos={'x':0,'y':0,'z':0}):
 
 		#==================================
 		glPushMatrix()
