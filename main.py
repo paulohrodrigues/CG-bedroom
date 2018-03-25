@@ -158,7 +158,7 @@ def iluminacao_da_cena():
 
     #Capacidade de brilho do material
     especularidade=[1.0,1.0,1.0,1.0]
-    especMaterial = 60;
+    especMaterial = 60
 
     # Especifica que a cor de fundo da janela será branca
     glClearColor(1.0, 1.0, 1.0, 1.0)
