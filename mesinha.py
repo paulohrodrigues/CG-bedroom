@@ -85,8 +85,8 @@ class Mesinha:
         #base
         glColor3f(.0, 0.0, 0.0)
         glPushMatrix() 
-        glScalef(1.5, -0.1, 1)
-        glTranslate(0,-1,0)
+        glScalef(1.5, 0.1, 1)
+        glTranslate(0,1,0)
         glutSolidCube(1.0)
         glPopMatrix()
 
@@ -101,8 +101,8 @@ class Mesinha:
         #teclado
         glColor3f(.1, 0.1, 0.1)
         glPushMatrix() 
-        glScalef(1, -0.1, -0.5)
-        glTranslate(0,-1.1,0)
+        glScalef(1, 0.1, -0.5)
+        glTranslate(0,1.1,0)
         glutSolidCube(1.0)
         glPopMatrix()
 
