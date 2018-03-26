@@ -16,6 +16,8 @@ from abajur import Abajur
 from mesinha import Mesinha
 from assets import *
 from wardrobe import Wardrobe
+from walls import Walls
+from cubeForAbajur import CubeForAbajur
 
 global esqdir
 global cimabaixo
@@ -135,12 +137,14 @@ def desenho():
     global aux1
     global aux2
 
-    eixos()
-    Abajur().draw(1,{"x":0,"y":0,"z":2})    
-    Mesinha().draw(1,{"x":0,"y":0,"z":-1})
-    Window().draw(1,{"x":0,"y":0,"z":-5})
-    Flower().draw(1,{"x":0,"y":0,"z":5})
-    Wardrobe(1,{"x":5,"y":0,"z":0}).draw()
+    # eixos()
+    Abajur().draw(1,{"x":1.4,"y":2,"z":-0.17})    
+    Window().draw(2.5,{"x":0,"y":1,"z":-1.79})
+    Flower().draw(1,{"x":-1.4,"y":-0.90,"z":-2})
+    Wardrobe(1,{"x":3.5,"y":-1.65,"z":-4}).draw()
+    Walls().draw(1,{"x":5,"y":0,"z":0})
+    Mesinha().draw(1,{"x":0,"y":-1,"z":-2})
+    # CubeForAbajur().draw(1,{"x":1.7,"y":-0.5,"z":0})
 
 
 def iluminacao_da_cena():

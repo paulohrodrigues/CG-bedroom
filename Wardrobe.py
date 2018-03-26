@@ -47,7 +47,7 @@ class Wardrobe:
         
         glPushMatrix()
         glColor3f(1.0, 0.3, 0.0)
-        glTranslate(self.x - diff, self.halfPos * 3, self.halfPos + self.z + 0.1)
+        glTranslate(self.x - diff, self.halfPos * 0.5, self.halfPos + self.z + 0.1)
         glutSolidSphere(0.09, 20, 15)
         glPopMatrix()
 

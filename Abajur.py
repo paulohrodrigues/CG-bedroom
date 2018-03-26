@@ -24,7 +24,7 @@ class Abajur:
             cont += 1
             glutSolidTorus(0.06,0.5,50,50)
             glTranslate( 0.0, 0.0, 0.02)
-            glScale( 0.97, 0.97, 1)
+            glScale( 0.99, 0.99, 1)
         glPopMatrix()
 
         '''Bottom of Abajur'''
