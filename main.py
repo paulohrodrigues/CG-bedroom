@@ -1,10 +1,6 @@
-# Aula sobre composição de objetos e uso do teclado.
+# Trabalho de CG Quarto
 from math import cos
-from math import pi
 from math import sin
-import timeit
-import ctypes
-import random
 from sys import argv
 from OpenGL.GL import *
 from OpenGL.GLU import *
@@ -48,10 +44,9 @@ def desenho():
     Abajur().draw(1,{"x":1.4,"y":2,"z":-0.17})    
     Window().draw(2.5,{"x":0,"y":1,"z":-1.79})
     Flower().draw(1,{"x":-1.4,"y":-0.90,"z":-2})
-    Wardrobe(1,{"x":3.5,"y":-1.65,"z":-4}).draw()
+    Wardrobe().draw(1,{"x":3.5,"y":-1.65,"z":-4})
     Walls().draw(1,{"x":5,"y":0,"z":0})
     Mesinha().draw(1,{"x":0,"y":-1,"z":-2})
-    # CubeForAbajur().draw(1,{"x":1.7,"y":-0.5,"z":0})
 
 
 def iluminacao_da_cena():

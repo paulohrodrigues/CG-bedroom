@@ -4,7 +4,10 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 from OpenGL.GLE import *  
 
-
+"""
+@Author: Artur S.  Farias
+@Description: Mesihha com banco e notebook
+"""
 class Mesinha:
     def draw(self,scale,positions):
         glTranslate(positions['x'],positions['y'],positions['z'])

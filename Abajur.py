@@ -2,6 +2,12 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
+
+"""
+@Author: Paulo Henrique R Abreu
+@Description: Abajur
+"""
+
 class Abajur:
     def draw(self,scale,positions):
         '''Cylinder of Abajur'''

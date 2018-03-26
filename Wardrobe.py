@@ -3,16 +3,12 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
-class Wardrobe:
-    def __init__(self, scale, positions):
-        self.side    = 1.5
-        self.scale   = scale
-        self.halfPos = +self.side/2
-        self.halfNeg = -self.side/2
+"""
+@Author: Luiz Rodrigo M da Silva
+@Description: Guarda Roupa
+"""
 
-        self.x = positions['x']
-        self.y = positions['y']
-        self.z = positions['z']
+class Wardrobe:
 
     def shape(self):
 
@@ -60,7 +56,17 @@ class Wardrobe:
         glutSolidCylinder(0.06, 0.18, 15, 10)
         glPopMatrix()
 
-    def draw(self):
+    def draw(self,scale, positions):
+
+        self.side    = 1.5
+        self.scale   = scale
+        self.halfPos = +self.side/2
+        self.halfNeg = -self.side/2
+
+        self.x = positions['x']
+        self.y = positions['y']
+        self.z = positions['z']
+
         self.shape()
         self.border()
         self.door()

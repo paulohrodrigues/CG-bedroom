@@ -2,6 +2,11 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
+"""
+@Author: Flavio Henrique Nunes Leite.
+@Description: Cama moderna.
+"""
+
 class Cama:
     def draw(self,scale,positions):
         glPushMatrix() 

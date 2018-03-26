@@ -3,6 +3,11 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 from OpenGL.GLE import * 
 
+"""
+@Author: Paulo Henrique R Abreu
+@Description: Paredes
+"""
+
 class Walls:
     def draw(self,scale,positions):
         glColor3f(0.3, 0.3, 0.3)

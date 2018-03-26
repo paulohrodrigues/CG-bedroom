@@ -2,6 +2,10 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
+"""
+@Author: Gabriel L Pontes
+@Description: Janela e Flor
+"""
 
 class Window:
 	
