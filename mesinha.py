@@ -18,65 +18,64 @@ class Mesinha:
         # Tabuas superior 
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(3, 0.1, 2) 
-        glutSolidCube(1.0)
+        glScalef(40, 1, 20) 
+        glutSolidCube(0.1)
         glPopMatrix()
 
-        # pé  direito 
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(0.1, 1.8, 2) 
-        glTranslate(-14,-0.5,0)
-        glutSolidCube(1.0)
+        glScalef(1,20, 20) 
+        glTranslate(-1.9,-0.05,0)
+        glutSolidCube(0.1)
         glPopMatrix()
 
-        # pé  esquerdo 
+
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(0.1, 1.8, 2) 
-        glTranslate(14,-0.5,0)
-        glutSolidCube(1.0)
+        glScalef(1,20, 20) 
+        glTranslate(1.9,-0.05,0)
+        glutSolidCube(0.1)
         glPopMatrix()
 
     def __banco(self):
         # assento 
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(1, 0.1, 1) 
-        glTranslate(0,-8,2)
-        glutSolidCube(1.0)
+        glScalef(10, 1, 10) 
+        glTranslate(0,-1,0.2)
+        glutSolidCube(0.1)
         glPopMatrix()
 
         # perna 1 
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(0.1, 1, 0.1)
-        glTranslate(4.8,-1.3,16) 
-        glutSolidCube(1.0)
+        glScalef(1, 10, 1)
+        glTranslate(0.5,-0.15,1.5) 
+        glutSolidCube(0.1)
         glPopMatrix()
 
         # perna 2 
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(0.1, 1, 0.1)
-        glTranslate(-4.8,-1.3,16) 
-        glutSolidCube(1.0)
+        glScalef(1, 10, 1)
+        glTranslate(-0.5,-0.15,1.5)
+        glutSolidCube(0.1)
         glPopMatrix()
 
         # perna 3 
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(0.1, 1, 0.1)
-        glTranslate(4.8,-1.3,24) 
-        glutSolidCube(1.0)
+        glScalef(1, 10, 1)
+        glTranslate(0.5,-0.15,2.5) 
+        glutSolidCube(0.1)
         glPopMatrix()
 
         # perna 4
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(0.1, 1, 0.1)
-        glTranslate(-4.8,-1.3,24) 
-        glutSolidCube(1.0)
+        glScalef(1, 10, 1)
+        glTranslate(-0.5,-0.15,2.5)
+        glutSolidCube(0.1)
         glPopMatrix()
 
 
@@ -85,31 +84,31 @@ class Mesinha:
         #base
         glColor3f(.0, 0.0, 0.0)
         glPushMatrix() 
-        glScalef(1.5, 0.1, 1)
-        glTranslate(0,1,0)
-        glutSolidCube(1.0)
+        glScalef(15, 1, 11)
+        glTranslate(0,0.1,0)
+        glutSolidCube(0.1)
         glPopMatrix()
 
         #tela
         glColor3f(.0, 0.0, 0.0)
         glPushMatrix() 
-        glScalef(1.5, 1, 0.1)
-        glTranslate(0,0.6,-5)
-        glutSolidCube(1.0)
+        glScalef(15, 11, 1)
+        glTranslate(0,0.05,-0.5)
+        glutSolidCube(0.1)
         glPopMatrix()
 
         #teclado
         glColor3f(.1, 0.1, 0.1)
         glPushMatrix() 
-        glScalef(1, 0.1, -0.5)
-        glTranslate(0,1.1,0)
-        glutSolidCube(1.0)
+        glScalef(12, 1, 7)
+        glTranslate(0,0.11,0)
+        glutSolidCube(0.1)
         glPopMatrix()
 
         #visor
         glColor3f(.3, 0.3, 0.3)
         glPushMatrix() 
-        glScalef(1.3, 0.9, 0.1)
-        glTranslate(0,0.6,-4.9)
-        glutSolidCube(1.0)
+        glScalef(12, 10, 1)
+        glTranslate(0,0.05,-0.49)
+        glutSolidCube(0.1)
         glPopMatrix()
