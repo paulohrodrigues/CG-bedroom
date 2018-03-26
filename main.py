@@ -3,7 +3,6 @@ from math import cos
 from math import pi
 from math import sin
 import timeit
-#import numpy
 import ctypes
 import random
 from sys import argv
@@ -35,7 +34,7 @@ aux2 = 0
 aux3 = 0
 aux4 = 0
 angulo = 45
-distanciamax = 500    #distancia max para renderizar objs na proj. testar com 10.
+distanciamax = 500
 estadoluz0 = 1
 estadoluz1 = 0
 estadoluz2 = 0
@@ -156,27 +155,13 @@ def tela():
     glMatrixMode(GL_PROJECTION) # Muda a matriz de projeçao
     glLoadIdentity()# carrega a matriz identidade
 
-    #gluPerspective(angulo, aspecto , near (perto), far(longe) )
-    #  angulo = angulo em graus na direçao y.
-    #  aspecto = deformaçao da janela. normalmente e a razao entre a largura e altura
-    #  near = a menor distancia desenhada
-    #  far = a maior distancia para que o objeto seja desenhado
     gluPerspective(angulo, 1, 0.1, distanciamax) # Especifica a projeção perspectiva
-
-    #glOrtho(left,right,bottom, top, near, far)
-    #  left,right,bottom, top = limites da projeçao
-    #  near = a menor distancia desenhada
-    #  far = a maior distancia para que o objeto seja desenhado 
-    #glOrtho(-5,5,-5,5,0.1,500) # Especifica a projeção paralela ortogonal
 
     glMatrixMode(GL_MODELVIEW) # Especifica sistema de coordenadas do modelo
     glLoadIdentity() # Inicializa sistema de coordenadas do modelo
 
 #CÂMERA
 
-    #Pense na câmera como um vetor que aponta para o alvo da cena. #
-    #Cada ponto desse vetor é em 3D (x, y, z)
-    # A última coordenada ajusta a posição da câmera (deitada, de pé, invertida etc)
 
     #gluLookAt(eyex, eyey, eyez, alvox, alvoy, alvoz, upx, upy, upz)
     #    eyex, eyey, eyez = posiçao da camera
