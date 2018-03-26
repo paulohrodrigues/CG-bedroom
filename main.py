@@ -1,6 +1,4 @@
 # Aula sobre composição de objetos e uso do teclado.
-
-
 from math import cos
 from math import pi
 from math import sin
@@ -17,7 +15,8 @@ from mesinha import Mesinha
 from assets import *
 from wardrobe import Wardrobe
 from walls import Walls
-from cubeForAbajur import CubeForAbajur
+from cama import Cama
+
 
 global esqdir
 global cimabaixo
@@ -41,103 +40,12 @@ estadoluz0 = 1
 estadoluz1 = 0
 estadoluz2 = 0
 
-def eixos():      #desenha os eixos x e y do plano cartesiano.
-    glColor3f(.9, .1, .1) # cor RGB  eixo X
-    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
-    glRotatef(90, 0.0, 1.0, 0.0)     #Rotaçao do objeto
-    glTranslate( 0.0, 0.0, -2.0)  #Transtaçao do objeto
-    glutSolidCylinder(0.01, 4.0, 4, 10)
-    glPopMatrix()
-
-    glColor3f(.1, .1, .9) # cor RGB  eixo Y
-    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
-    glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
-    glTranslate( 0.0, 0.0, -2.0)  #Transtaçao do objeto
-    glutSolidCylinder(0.01, 4.0, 4, 10)
-    glPopMatrix()
-
-    glColor3f(.1, .9, .1) # cor RGB  eixo z
-    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
-    #glRotatef(90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
-    glTranslate( 0.0, 0.0, -2.0)  #Transtaçao do objeto
-    glutSolidCylinder(0.01, 4.0, 4, 10)
-    glPopMatrix()
-
-
-
-def desenha_com_poligonos():
-    glColor3f(1.0, 0.4, 0.0) # cor RGB
-    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
-    #glTranslate( 0.0, 1.0, 0.0)  #Transtaçao do objeto
-    #glRotatef(-90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
-    tamx = 0.0
-    tamy = 0.0
-    tamz = 0.0
-    lado = 0.2   
-    lado_i = 0.2 
-    dist = 0.2
-    dist_i = 0.2
-    cont = 1
-    while (cont <= 5):
-        cont += 1
-        tamx += ( lado_i * 2)
-        glBegin(GL_QUADS)# objeto   # GL_QUADS       ou    GL_LINE_LOOP
-        glColor3f(.9, .5, .5) # cor RGB
-        glVertex3f( tamx + lado, tamy + lado, tamz + dist )  #  eixo x
-        glVertex3f( tamx + lado, tamy - lado, tamz + dist )#     
-        glVertex3f( tamx - lado, tamy - lado, tamz  )#  eixo y
-        glVertex3f( tamx - lado, tamy + lado, tamz  )  #
-        tamz = tamz + dist
-        dist += (dist_i * cont ) 
-        glEnd()    
-    glPopMatrix()
-
-# desenho com o pushMatrix geral
-def desenha_com_extrusao():
-    glColor3f(1.0, 0.4, 0.0) # cor RGB
-    glPushMatrix()
-    glRotatef(-90, 0.1, 0.0, 0.0)
-    glTranslate(0,0,-0.8)
-    glutSolidCylinder(0.1, 0.8, 20, 20)
-    glPopMatrix()
-    glPushMatrix()                # Push e Pop Isolam os efeitos das transformaçoes no objeto
-    glRotatef(-90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
-    cont = 1
-    while (cont <= 30):
-        cont += 1
-        glutSolidTorus(0.06,0.5,50,50)
-        glTranslate( 0.0, 0.0, 0.02)
-        glScale( 0.97, 0.97, 1)
-    glPopMatrix()
-
-# desenho com o pushMatrix para cada objeto do loop    
-def desenha_com_extrusao2():
-    glColor3f(0.3, 1.0, 0.6) # cor RGB
-    glTranslate( -1.5, 0.0, 0.0)  #Transtaçao do objeto
-    #glRotatef(-90, 1.0, 0.0, 0.0)     #Rotaçao do objeto
-    cont = 1
-    translacaoX = 0.03
-    while (cont <= 25):
-        cont += 1
-        translacaoX += 0.03
-        glPushMatrix()
-        glTranslate( 0.0, 0.0, translacaoX)
-        
-        #glRotatef(3, 1.0, 0.0, 0.0)
-        #glScale( 0.9 , 0.9, 1.0)
-        #glScale( 1.0 - cont*0.03, 1.0 - cont*0.03, 1.0)
-        glScale( 1.0 - sin(cont*0.1), 1.0 - sin(cont*0.1), 1.0)
-        glutSolidTorus(0.06,0.5,50,50)  # o objeto vem depois
-        glPopMatrix()
-
-
-
 
 def desenho():
     global aux1
     global aux2
 
-    # eixos()
+    Cama().draw(2,{"x":0,"y":-1.8,"z":3.3})
     Abajur().draw(1,{"x":1.4,"y":2,"z":-0.17})    
     Window().draw(2.5,{"x":0,"y":1,"z":-1.79})
     Flower().draw(1,{"x":-1.4,"y":-0.90,"z":-2})
@@ -167,7 +75,7 @@ def iluminacao_da_cena():
 
     #Capacidade de brilho do material
     especularidade=[1.0,1.0,1.0,1.0]
-    especMaterial = 60
+    especMaterial = 20
 
     # Especifica que a cor de fundo da janela será branca
     glClearColor(1.0, 1.0, 1.0, 1.0)
@@ -274,7 +182,7 @@ def tela():
     #    eyex, eyey, eyez = posiçao da camera
     #    alvox, alvoy, alvoz = coordenada para onde a camera olha.
     #    upx, upy, upz = indica a posiçao vertical da camera.
-    gluLookAt(sin(esqdir) * 10, 0 + cimabaixo ,cos(esqdir) * 10, aux1,aux2,0, 0,1,0) # Especifica posição do observador e do alvo
+    gluLookAt(sin(esqdir) * 13, 0 + cimabaixo ,cos(esqdir) * 13, aux1,aux2,0, 0,1,0) # Especifica posição do observador e do alvo
     print('Camera: (' + str( sin(esqdir) * 10) + ',' + str(cimabaixo) + "," + str(cos(esqdir) * 10) + ')')
     print('Alvo: (' + str(aux1) +','+str(aux2)+',0)')
 
@@ -297,6 +205,10 @@ def Teclado (tecla, x, y):
     global estadoluz0
     global estadoluz1
     global estadoluz2
+    global esqdir
+    global cimabaixo
+
+
     print("*** Tratamento de teclas comuns")
     print(">>> Tecla: ",tecla)
 	
@@ -340,6 +252,18 @@ def Teclado (tecla, x, y):
         else:
             estadoluz2 = 0
             glDisable(GL_LIGHT2)
+    if tecla == b'i': #i
+        aux1=-4
+        esqdir=0
+        cimabaixo=0
+    if tecla == b'o': #i
+        aux1=4
+        esqdir=0
+        cimabaixo=0
+    if tecla == b'p': #i
+        aux1=0
+        esqdir=0
+        cimabaixo=0
         
     tela()
     glutPostRedisplay()
@@ -348,15 +272,7 @@ def Teclado (tecla, x, y):
 def TeclasEspeciais (tecla, x, y):
     global esqdir
     global cimabaixo
-    print("*** Tratamento de teclas especiais")
-    print ("tecla: ", tecla)
-    if tecla == GLUT_KEY_F1:
-        print(">>> Tecla F1 pressionada")
-    elif tecla == GLUT_KEY_F2:
-        print(">>> Tecla F2 pressionada")
-    elif tecla == GLUT_KEY_F3:
-        print(">>> Tecla F3 pressionada")
-    elif tecla == GLUT_KEY_LEFT:
+    if tecla == GLUT_KEY_LEFT:
         esqdir = esqdir - 0.1
     elif tecla == GLUT_KEY_RIGHT:
         esqdir = esqdir + 0.1
@@ -364,8 +280,6 @@ def TeclasEspeciais (tecla, x, y):
         cimabaixo = cimabaixo + 0.05
     elif tecla == GLUT_KEY_DOWN:
         cimabaixo = cimabaixo - 0.05
-    else:
-        print ("Apertou... " , tecla)
     tela()
     glutPostRedisplay()   
 
@@ -386,17 +300,12 @@ def ControleMouse(button, state, x, y):
 
 
 # PROGRAMA PRINCIPAL
-
 glutInit(argv)
 glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH)
 glutInitWindowSize(600,600)
-glutCreateWindow(b"Aula06")
+glutCreateWindow(b"Quarto")
 glutDisplayFunc(tela)
 glutMouseFunc(ControleMouse)
 glutKeyboardFunc (Teclado)
 glutSpecialFunc (TeclasEspeciais)
-glutMainLoop()  # Inicia o laço de eventos da GLUT
-
-
-
-
+glutMainLoop()
