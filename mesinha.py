@@ -42,39 +42,39 @@ class Mesinha:
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
         glScalef(10, 1, 10) 
-        glTranslate(0,-1,0.2)
+        glTranslate(0,-0.5,0.2)
         glutSolidCube(0.1)
         glPopMatrix()
 
         # perna 1 
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(1, 10, 1)
-        glTranslate(0.5,-0.15,1.5) 
+        glScalef(1, 15, 1)
+        glTranslate(0.5,-0.08,1.5) 
         glutSolidCube(0.1)
         glPopMatrix()
 
         # perna 2 
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(1, 10, 1)
-        glTranslate(-0.5,-0.15,1.5)
+        glScalef(1, 15, 1)
+        glTranslate(-0.5,-0.08,1.5)
         glutSolidCube(0.1)
         glPopMatrix()
 
         # perna 3 
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(1, 10, 1)
-        glTranslate(0.5,-0.15,2.5) 
+        glScalef(1, 15, 1)
+        glTranslate(0.5,-0.08,2.5) 
         glutSolidCube(0.1)
         glPopMatrix()
 
         # perna 4
         glColor3f(.6, 0.4, 0.3)
         glPushMatrix() 
-        glScalef(1, 10, 1)
-        glTranslate(-0.5,-0.15,2.5)
+        glScalef(1, 15, 1)
+        glTranslate(-0.5,-0.08,2.5)
         glutSolidCube(0.1)
         glPopMatrix()
 
