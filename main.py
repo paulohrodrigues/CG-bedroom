@@ -5,7 +5,7 @@ from sys import argv
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
-from abajur import Abajur
+from abajur import *
 from mesinha import Mesinha
 from assets import *
 from wardrobe import Wardrobe
@@ -47,6 +47,7 @@ def desenho():
     Wardrobe().draw(1,{"x":3.5,"y":-1.65,"z":-4})
     Walls().draw(1,{"x":5,"y":0,"z":0})
     Mesinha().draw(1,{"x":0,"y":-1,"z":-2})
+    Trofeu().draw(1,{"x":0,"y":-1,"z":-2})
 
 
 def iluminacao_da_cena():
